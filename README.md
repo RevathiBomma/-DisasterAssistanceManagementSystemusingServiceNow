@@ -71,22 +71,36 @@ The portal automates:
      Status updated to Resolved
      Next citizen in queue gets assigned automatically
 6.Dashboards update live.
+
+
+
 ------working----
-1.After creating tables ,impersonate by any user and open the service portal which looks like this:
-<img width="1920" height="1080" alt="Screenshot (244)" src="https://github.com/user-attachments/assets/d0fa853f-9082-4851-aef9-3c817dabae8c" />
+1.After creating tables ,impersonate by any user and open the service portal .
+<img width="1920" height="1080" alt="Screenshot (244)" src="https://github.com/user-attachments/assets/8fb17945-9146-4fb0-a9b3-4f7aeebc5753" />
 
 
-2.Service portal consists of Category"Disaster Assistance" with catalog items "citizenrequest" and "volunteersignup".Impersonate as a user into service portal and signup as a volunteer.Volunteer page looks like this:
-<img width="1920" height="1080" alt="Screenshot (244)" src="https://github.com/user-attachments/assets/22c1673b-89cc-4266-a864-fc10dd2ec6bd" />
-fill in the details it is mandatory to provide location  and "volunteer member" table gets updated like this:
-<img width="1920" height="1080" alt="Screenshot (244)" src="https://github.com/user-attachments/assets/e3f242a9-7779-4c02-ba9b-936645042286" />
+
+
+2.Service portal consists of Category"Disaster Assistance" with catalog items "citizenrequest" and "volunteersignup".Impersonate as a user into service portal and signup as a volunteer.Volunteer page looks like this;
+<img width="1920" height="1080" alt="Screenshot (220)" src="https://github.com/user-attachments/assets/f71c4fb3-2648-47cc-826e-c92d7ef839fc" />
+
+
+
+
+2.Fill in the details it is mandatory to provide location  and "volunteer member" table gets updated like this:
+<img width="1920" height="1080" alt="Screenshot (222)" src="https://github.com/user-attachments/assets/81877e1e-42f9-487b-86a6-554d1b259b8e" />
+
+
 
 
 3.Now the affected citizen also fills the record producer of citizen request which looks like this:
-<img width="1920" height="1080" alt="Screenshot (244)" src="https://github.com/user-attachments/assets/6b6e9789-0b38-41ea-97ec-4f575e8def9a" />
-<img width="1920" height="1080" alt="Screenshot (224)" src="https://github.com/user-attachments/assets/0251c2de-33df-4220-900d-6ef998bd7af4" />
-fill in the details by providing location and the "citizenrequest table"gets updated and a popup message will be displayed according to the availability of the volunteers :
-<img width="1920" height="1080" alt="Screenshot (225)" src="https://github.com/user-attachments/assets/b84d54f0-6436-4ac9-9c4f-7bf20fe02bba" />
+<img width="1920" height="1080" alt="Screenshot (223)" src="https://github.com/user-attachments/assets/1ce256ce-2591-42ef-a90b-80a533f2efe6" />
+<img width="1920" height="1080" alt="Screenshot (224)" src="https://github.com/user-attachments/assets/6d42a565-a629-43dd-8de7-be713eb5581e" />
+
+
+
+4.Fill in the details by providing location and the "citizenrequest table"gets updated and a pop up message will be displayed according to the availability of the volunteers :
+<img width="1920" height="1080" alt="Screenshot (225)" src="https://github.com/user-attachments/assets/79adcd18-0a53-4ece-930b-682f5318ae65" />
 
 
 
