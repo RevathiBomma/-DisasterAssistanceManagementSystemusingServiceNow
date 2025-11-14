@@ -35,6 +35,7 @@ The portal automates:
  
  2.🗃 Database Design (Custom Tables)
    -> 1. u_citizen_requests
+   
  | Field Label        | Field Name           |
 | ------------------ | -------------------- |
 | Citizen Name       | u_citizen_name       |
@@ -46,6 +47,7 @@ The portal automates:
 | Assigned Volunteer | u_assigned_volunteer |
 | Status             | u_status             |
   ->2.u_volunteer_members:
+  
   | Field Label    | Field Name       |
 | -------------- | ---------------- |
 | Full Name      | u_full_name      |
@@ -53,6 +55,7 @@ The portal automates:
 | Contact Number | u_contact_number |
 | Location       | u_location       |
   ->3. u_volunteer_task:
+  
   | Field Label                                      | Field Name           |
 | ------------------------------------------------ | -------------------- |
 | Assigned Volunteer (Reference → sys_user)        | u_assigned_volunteer |
@@ -62,17 +65,24 @@ The portal automates:
 
 
 
-3.🧩 Workflow: Start to End:
+3.🧩 Workflow: 
+
+Start to End:
 1.Citizen submits the request (Record Producer).
+
 2.System finds volunteer with same location.
+
 3.If volunteer is free →
      Status = InProgress
      Task created
+     
 4.If volunteer is busy →
      Status = Assigned (queued)
+     
 5.Citizen clicks “Received” →
      Status updated to Resolved
      Next citizen in queue gets assigned automatically
+     
 6.Dashboards update live.
 
 
@@ -134,14 +144,23 @@ The portal automates:
 
 
 🛠 Technologies Used
+
  ServiceNow Platform (PDI)
+ 
  Script Includes
+ 
  GlideRecord API
+ 
  Business Rules
+ 
  Record Producers
+ 
  AngularJS (Service Portal Widgets)
+ 
  Bootstrap Styling
+ 
  GlideAjax
+ 
  Custom Tables
 
 
