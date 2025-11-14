@@ -1,0 +1,89 @@
+Volunteer Dashboard Widget(Server,html):
+SERVER SCRIPT:
+(function () {
+
+    data.volunteerName = gs.getUserDisplayName();
+    data.volunteerId = gs.getUserID();
+
+    data.currentRequests = [];
+    data.citizensServed = 0;
+    data.currentlyServingCount = 0;
+
+    gs.info("Volunteer Dashboard → Logged in user: " + data.volunteerName + " | Sys ID: " + data.volunteerId);
+
+    var taskGR = new GlideRecord('u_volunteer_task');
+    if (taskGR.isValid()) {
+
+        // Get tasks assigned to this volunteer
+        taskGR.addQuery('u_assigned_volunteer', data.volunteerId);
+        taskGR.query();
+
+        while (taskGR.next()) {
+
+            // Normalize status value (case-insensitive)
+            var status = (taskGR.u_status + '').toLowerCase(); // "inprogress", "resolved"
+
+            // Get related citizen request record
+            var citizen = taskGR.u_citizen_request.getRefRecord();
+
+            if (citizen && citizen.isValidRecord()) {
+
+                var citizenName = citizen.u_citizen_name.toString();
+                var resource = citizen.u_resource_type.toString();
+
+                data.currentRequests.push({
+                    citizen_name: citizenName,
+                    requested_resource: resource,
+                    status: status
+                });
+
+                // Count served and currently serving
+                if (status === 'resolved')
+                    data.citizensServed++;
+
+                if (status === 'inprogress')
+                    data.currentlyServingCount++;
+            }
+        }
+    }
+
+    gs.info("Volunteer Dashboard → Served: " + data.citizensServed +
+            " | Currently Serving: " + data.currentlyServingCount);
+
+})();
+HTML TEMPLATE:
+<div>
+  <h3>Welcome, {{ c.data.volunteerName }}</h3>
+
+  <p><strong>Citizens Served:</strong> {{ c.data.citizensServed }}</p>
+
+  <h4>Currently Serving</h4>
+
+  <table class="table table-striped" ng-if="c.data.currentRequests.length > 0">
+    <thead>
+      <tr>
+        <th>Citizen Name</th>
+        <th>Requested Resource</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="req in c.data.currentRequests">
+        <td>{{ req.citizen_name }}</td>
+        <td>{{ req.requested_resource }}</td>
+        <td>
+          <span ng-if="req.status == 'inprogress'" class="label label-warning">
+            In Progress
+          </span>
+          <span ng-if="req.status == 'resolved'" class="label label-success">
+            Resolved
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div ng-if="c.data.currentRequests.length == 0" class="alert alert-info">
+    No active requests found for {{ c.data.volunteerName }}
+  </div>
+</div>
