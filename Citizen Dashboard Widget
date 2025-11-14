@@ -1,0 +1,97 @@
+Citizen Dashboard Widget(SERVER,CLIENT,HTML):
+CLIENT SCRIPT:
+api.controller = function($scope, spUtil) {
+    var c = this;
+
+    // When the citizen clicks "Mark as Received"
+    $scope.markReceived = function(sys_id) {
+        var ga = new GlideAjax('global.CitizenRequestHandler');
+        ga.addParam('sysparm_name', 'markAsReceived');
+        ga.addParam('sysparm_sys_id', sys_id);
+        ga.getXMLAnswer(function(response) {
+            if (response === 'success') {
+                alert('Marked as Received successfully!');
+                spUtil.refresh($scope); // refresh the widget to update UI
+            } else {
+                alert('Failed to update: ' + response);
+            }
+        });
+    };
+};
+SERVER SCRIPT:
+(function() {
+    data.requests = [];
+
+    // Get the current logged-in user's normalized name
+    var userName = gs.getUserDisplayName().trim().toLowerCase();
+
+    // Break name into first and last for partial matches
+    var nameParts = userName.split(' ');
+    var firstName = nameParts[0];
+    var lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : '';
+
+    var gr = new GlideRecord('u_citizen_requests');
+
+    // Query: match citizen name that contains either first or last name (case-insensitive)
+    var query = 'u_citizen_nameLIKE' + firstName;
+    if (lastName) {
+        query += '^ORu_citizen_nameLIKE' + lastName;
+    }
+
+    gr.addEncodedQuery(query);
+    gr.query();
+
+    while (gr.next()) {
+        data.requests.push({
+            sys_id: gr.getUniqueValue(),
+            citizen: gr.u_citizen_name.toString(),
+            volunteer: gr.u_assigned_volunteer.getDisplayValue(),
+            resource: gr.u_resource_type.getDisplayValue(),
+            status: gr.u_status.toString()
+        });
+    }
+
+    // If nothing found, show message
+    if (data.requests.length === 0) {
+        data.message = "No requests found for " + gs.getUserDisplayName();
+    }
+})();
+HTML TEMPLATE:
+<div class="container">
+  <h3 class="mb-3 text-center">Citizen Dashboard</h3>
+
+  <div ng-if="data.requests.length === 0" class="alert alert-info text-center">
+    {{data.message || 'No requests found.'}}
+  </div>
+
+  <table class="table table-bordered table-striped" ng-if="data.requests.length > 0">
+    <thead class="table-dark">
+      <tr>
+        <th>Citizen Name</th>
+        <th>Requested Resource</th>
+        <th>Assigned Volunteer</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="req in data.requests">
+        <td>{{req.citizen}}</td>
+        <td>{{req.resource}}</td>
+        <td>{{req.volunteer}}</td>
+        <td>{{req.status}}</td>
+        <td>
+          <button class="btn btn-success"
+                  ng-if="req.status == 'InProgress'"
+                  ng-click="markReceived(req.sys_id)">
+            Mark as Received
+          </button>
+          <span ng-if="req.status == 'Resolved'" class="text-success fw-bold">
+            Received
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
