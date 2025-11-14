@@ -9,6 +9,8 @@ The portal automates:
 ->Auto-updating status when a citizen marks “Received”
 ->Queue management (next citizen assigned when previous request is completed)
 ->This project demonstrates end-to-end design of a ServiceNow workflow automation system using custom tables, widgets, business rules, script includes, and GlideAjax.
+
+
 1.Features:
 ✔ Citizen Portal
  Submit request for resources (food, medicine, clothes, etc.)
@@ -25,6 +27,9 @@ The portal automates:
  Queueing system (if volunteer busy → citizen status = Assigned)
  Auto-start next citizen when previous request becomes Resolved
  Sync between citizen, volunteer task, and volunteer status
+
+
+ 
  2.🗃 Database Design (Custom Tables)
    -> 1. u_citizen_requests
  | Field Label        | Field Name           |
@@ -50,6 +55,10 @@ The portal automates:
 | Assigned Volunteer (Reference → sys_user)        | u_assigned_volunteer |
 | Citizen Request (Reference → u_citizen_requests) | u_citizen_request    |
 | Status                                           | u_status             |
+
+
+
+
 3.🧩 Workflow: Start to End:
 1.Citizen submits the request (Record Producer).
 2.System finds volunteer with same location.
