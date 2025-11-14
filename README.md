@@ -12,16 +12,19 @@ The portal automates:
 
 
 1.Features:
+
 ✔ Citizen Portal
  Submit request for resources (food, medicine, clothes, etc.)
  Automatically matched with volunteer from same location
  Tracks live status
  “Mark as Received” button updates system instantly
+ 
 ✔ Volunteer Portal
  View currently assigned citizens
  Track number of citizens served
  See assigned resource and status
  Dynamic, auto-refreshing dashboard
+ 
 ✔ Automation Workflow
  Auto-assign volunteer only when free
  Queueing system (if volunteer busy → citizen status = Assigned)
@@ -101,6 +104,51 @@ The portal automates:
 
 4.Fill in the details by providing location and the "citizenrequest table"gets updated and a pop up message will be displayed according to the availability of the volunteers :
 <img width="1920" height="1080" alt="Screenshot (225)" src="https://github.com/user-attachments/assets/79adcd18-0a53-4ece-930b-682f5318ae65" />
+
+
+5.Volunteer tasks table also gets updated by updating the status of volunteer to "In progress";
+<img width="1920" height="1080" alt="Screenshot (227)" src="https://github.com/user-attachments/assets/89f83072-20c8-425e-b12e-45ef296660da" />
+
+
+6.Suppose the volunteer is busy serving another citizen then the requested citizen will be informed  that the volunteer is busy.
+<img width="1920" height="1080" alt="Screenshot (245)" src="https://github.com/user-attachments/assets/73d12749-9d43-4d7d-9775-aec60fad7a27" />
+
+
+
+7.According to the status of citizen request their dashboard gets updated.There will be a button as"Mark as received" where the citizen should click after receiving the requested resources.
+<img width="1920" height="1080" alt="Screenshot (226)" src="https://github.com/user-attachments/assets/00454efd-c56f-472f-8973-a781abded539" />
+
+
+8.Volunteers dashboard consists of his status and count of the citizens served.
+<img width="1920" height="1080" alt="Screenshot (239)" src="https://github.com/user-attachments/assets/e0093e5d-431e-4177-a88d-dd1fa321c0e1" />
+
+
+9.Whenever the citizen clicks the button "mark as received" their dashboard changes ;
+<img width="1920" height="1080" alt="Screenshot (240)" src="https://github.com/user-attachments/assets/3c722d6c-b3f8-41b3-932d-f819ac88ea1e" />
+
+
+10.Similarly the dashboard of volunteer also gets updated.Volunteer task table gets updated according the citizens response and volunteers acceptance of requests.
+<img width="1920" height="1080" alt="Screenshot (242)" src="https://github.com/user-attachments/assets/db6dd334-bfd8-45dd-95d8-b2a902030bdb" />
+
+
+
+
+🛠 Technologies Used
+ ServiceNow Platform (PDI)
+ Script Includes
+ GlideRecord API
+ Business Rules
+ Record Producers
+ AngularJS (Service Portal Widgets)
+ Bootstrap Styling
+ GlideAjax
+ Custom Tables
+
+
+
+
+
+
 
 
 
