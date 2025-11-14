@@ -71,5 +71,7 @@ The portal automates:
      Status updated to Resolved
      Next citizen in queue gets assigned automatically
 6.Dashboards update live.
+<img width="1920" height="1080" alt="Screenshot (244)" src="https://github.com/user-attachments/assets/d0fa853f-9082-4851-aef9-3c817dabae8c" />
+
 
 
